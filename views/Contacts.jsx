@@ -1,5 +1,6 @@
 import { contactService } from "../services/contact.service";
-
+const { useSelector, useDispatch } = ReactRedux;
+const { useState, useEffect } = React;
 export function Contacts() {
   const [contacts, setContacts] = useState();
   const [isAdd, setisAdd] = useState(null);
