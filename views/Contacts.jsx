@@ -3,9 +3,10 @@ import { loadContacts } from "../store/actions/contact.actions.js";
 const { useSelector, useDispatch } = ReactRedux;
 const { useState, useEffect } = React;
 export function Contacts() {
-  const [contacts, setContacts] = useState();
   const [isAdd, setisAdd] = useState(null);
-  const [newContact, setNewContact] = useState();
+  const [newContact, setNewContact] = useState(
+    contactService.getEmptyContact()
+  );
   const selector = useSelector(
     (storeState) => storeState.contactModule.contacts
   );
@@ -52,7 +53,7 @@ export function Contacts() {
             <form
               onSubmit={(ev) => {
                 ev.preventDefault();
-                onAddContact(...contacts, newContact);
+                onAddContact(newContact);
                 setisAdd(null);
               }}
             >
@@ -76,10 +77,11 @@ export function Contacts() {
               />
               <input
                 type="tel"
-                name="firstName"
-                placeholder="First name"
+                name="phone"
+                placeholder="Phone"
                 onChange={handleChange}
               />
+              <button>Add</button>
             </form>
           </div>
         ) : (
