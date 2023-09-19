@@ -35,8 +35,8 @@ function getEmptyContact() {
 }
 
 function _createContacts() {
-  let cars = utilService.loadFromStorage(CONTACT_KEY);
-  if (!cars || !cars.length) {
+  let contacts = utilService.loadFromStorage(CONTACT_KEY);
+  if (!contacts || !contacts.length) {
     contacts = [];
     contacts.push(_createContact("avi", "avi", "jgjgjg@hghghgh", "0505050505"));
     contacts.push(_createContact("avi", "avi", "jgjgjg@hghghgh", "0505050505"));
