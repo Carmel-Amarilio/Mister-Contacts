@@ -1,12 +1,14 @@
 const { Route, Routes } = ReactRouterDOM;
 const Router = ReactRouterDOM.HashRouter;
+const { Provider } = ReactRedux
 
 import { AppHeader } from "./cmps/AppHeader.jsx";
 import { Home } from "./views/Home.jsx";
 import { Teams } from "./views/Teams.jsx";
 import { Contacts } from "./views/Contacts.jsx";
-const { Provider } = ReactRedux;
-import { store } from "./store/store.js";
+import { ContactsDetails } from "./views/ContactsDetails.jsx";
+
+import { store } from './store/store.js'
 
 export function App() {
   return (
@@ -18,6 +20,7 @@ export function App() {
             <Route path="/" element={<Home />} />
             <Route path="/teams" element={<Teams />} />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/contacts/:contactId" element={<ContactsDetails />} />
           </Routes>
         </section>
       </Router>
