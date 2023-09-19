@@ -1,12 +1,10 @@
-const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouterDOM
-const { Link} = ReactRouterDOM;
+const { useState, useEffect } = React
 
 import { contactService } from '../services/contact.service.js'
 
-export function ContactsDetails() {
+export function ContactEdit() {
     const params = useParams()
-    const navigate = useNavigate()
     const [currContact, setCurrContact] = useState(null)
 
     useEffect(() => {
@@ -21,18 +19,11 @@ export function ContactsDetails() {
             })
     }, [])
 
+    if(!currContact) return <div>loading...</div>
     console.log(currContact);
-    if (!currContact) return <div>loading...</div>
     const { id, firstName, lastName, phone, email } = currContact
     return (
-        <section className="contacts-details">
-            <button onClick={() => navigate('/contacts')}>back</button>
-            <img src="assets\img\user1.jpeg" />
-            <h1>Name: {firstName} {lastName}</h1>
-            <h3>Phone: {phone}</h3>
-            <h3>Email: {email}</h3>
-            <Link to={`/contacts/edit/${id}`} >Edit</Link>
-
+        <section>
         </section>
     )
 }

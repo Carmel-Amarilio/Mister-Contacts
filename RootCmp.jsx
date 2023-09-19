@@ -7,6 +7,7 @@ import { Home } from "./views/Home.jsx";
 import { Teams } from "./views/Teams.jsx";
 import { Contacts } from "./views/Contacts.jsx";
 import { ContactsDetails } from "./views/ContactsDetails.jsx";
+import { ContactEdit } from "./cmps/ContactEdit.jsx";
 
 import { store } from './store/store.js'
 
@@ -21,6 +22,7 @@ export function App() {
             <Route path="/teams" element={<Teams />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/contacts/:contactId" element={<ContactsDetails />} />
+            <Route path="/contacts/edit/:contactId" element={<ContactEdit />} />
           </Routes>
         </section>
       </Router>
