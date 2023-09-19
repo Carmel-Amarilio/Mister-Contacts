@@ -1,9 +1,11 @@
 import { contactService } from "../services/contact.service.js";
 import { loadContacts } from "../store/actions/contact.actions.js";
+import { removeContact } from "../store/actions/contact.actions.js";
+import { updateContact } from "../store/actions/contact.actions.js";
+import { onAddContact } from "../store/actions/contact.actions.js";
 const { useSelector, useDispatch } = ReactRedux;
 const { useState, useEffect } = React;
 export function Contacts() {
-  const [contacts, setContacts] = useState();
   const [isAdd, setisAdd] = useState(null);
   const [newContact, setNewContact] = useState();
   const selector = useSelector(
@@ -12,9 +14,18 @@ export function Contacts() {
 
   useEffect(() => {
     loadContacts().catch((err) => console.log(err));
-    console.log(selector);
   }, []);
 
+  function onRemoveContact(contactId) {
+    removeContact(contactId).catch((err) => console.log(err));
+  }
+  function onEditContact(contactId) {
+    updateContact(contactId).catch((err) => console.log(err));
+  }
+  function onAddContact(contact) {
+    const newContact = contactService.createContact(contact);
+    addContact(newContact);
+  }
   function handleChange({ target }) {
     const field = target.name;
     let value = target.value;
@@ -38,11 +49,8 @@ export function Contacts() {
       [field]: value,
     }));
   }
-  function onAddContact(contact) {
-    const newContact = contactService.createContact(contact);
-    contactService.save(newContact, false);
-  }
 
+  console.log(selector);
   return (
     <div>
       <h1>my contacts</h1>
@@ -76,14 +84,16 @@ export function Contacts() {
               />
               <input
                 type="tel"
-                name="firstName"
-                placeholder="First name"
+                name="phone"
+                placeholder="Phone"
                 onChange={handleChange}
               />
             </form>
           </div>
         ) : (
-          <button onClick={setisAdd(true)}>Add Contact</button>
+          <div>
+            <button onClick={setisAdd(true)}>Add Contact</button>
+          </div>
         )}
       </div>
     </div>
