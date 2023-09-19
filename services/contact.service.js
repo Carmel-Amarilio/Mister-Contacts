@@ -4,7 +4,7 @@ import { storageService } from "./async-storage.service.js";
 const CONTACT_KEY = "contactDB";
 _createContacts();
 
-export const carService = {
+export const contactService = {
   query,
   get,
   remove,
