@@ -12,7 +12,6 @@ export function Contacts() {
 
   useEffect(() => {
     loadContacts().catch((err) => console.log(err));
-    console.log(selector);
   }, []);
 
   function handleChange({ target }) {
@@ -42,6 +41,8 @@ export function Contacts() {
     const newContact = contactService.createContact(contact);
     contactService.save(newContact, false);
   }
+
+  console.log(selector);
 
   return (
     <div>
