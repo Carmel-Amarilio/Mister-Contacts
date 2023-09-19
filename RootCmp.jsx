@@ -20,7 +20,7 @@ export function App() {
             <Route path="/" element={<Home />} />
             <Route path="/teams" element={<Teams />} />
             <Route path="/contacts" element={<Contacts />} />
-            {/* <Route path="/contacts/:contactsId" element={<ContactsDetails />} /> */}
+            <Route path="/contacts/:contactsId" element={<ContactsDetails />} />
           </Routes>
         </section>
       </Router>
