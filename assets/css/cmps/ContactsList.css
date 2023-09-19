@@ -1,0 +1,12 @@
+.contact-list{
+    padding: 10px;
+}
+
+.contact-list li p{
+    margin: 0;
+   margin-inline-end: 20px;
+}
+.contact-list li {
+   cursor: pointer;
+   margin-bottom: 20px;
+}

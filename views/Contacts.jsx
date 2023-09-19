@@ -3,6 +3,7 @@ import { loadContacts } from "../store/actions/contact.actions.js";
 import { removeContact } from "../store/actions/contact.actions.js";
 import { updateContact } from "../store/actions/contact.actions.js";
 import { addContact } from "../store/actions/contact.actions.js";
+import {ContactList} from "../cmps/ContactList.jsx"
 const { useSelector, useDispatch } = ReactRedux;
 const { useState, useEffect } = React;
 export function Contacts() {
@@ -10,9 +11,7 @@ export function Contacts() {
   const [newContact, setNewContact] = useState(
     contactService.getEmptyContact()
   );
-  const selector = useSelector(
-    (storeState) => storeState.contactModule.contacts
-  );
+  const contacts = useSelector((storeState) => storeState.contactModule.contacts);
 
   useEffect(() => {
     loadContacts().catch((err) => console.log(err));
@@ -51,9 +50,9 @@ export function Contacts() {
     }));
   }
 
-  console.log(selector);
+  console.log(contacts);
   return (
-    <div>
+    <section >
       <h1>my contacts</h1>
       <div>
         {!isAdd ? (
@@ -105,6 +104,7 @@ export function Contacts() {
           </div>
         )}
       </div>
-    </div>
+      <ContactList contacts={contacts} />
+    </section>
   );
 }
