@@ -10,6 +10,7 @@ export const contactService = {
   remove,
   save,
   getEmptyContact,
+  createContact,
 };
 
 function query() {
@@ -24,8 +25,8 @@ function remove(contactId) {
   return storageService.remove(CONTACT_KEY, contactId);
 }
 
-function save(contact) {
-  return contact.id
+function save(contact, isEdit) {
+  return isEdit
     ? storageService.put(CONTACT_KEY, contact.id)
     : storageService.post(CONTACT_KEY, contact);
 }
@@ -48,7 +49,7 @@ function _createContacts() {
   }
 }
 
-function _createContact(firstName, lastName, email, phone) {
+function createContact(firstName, lastName, email, phone) {
   return {
     id: utilService.makeId(),
     firstName,
