@@ -104,7 +104,7 @@ export function Contacts() {
           </div>
         )}
       </div>
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts} onRemove={onRemoveContact} />
     </section>
   );
 }

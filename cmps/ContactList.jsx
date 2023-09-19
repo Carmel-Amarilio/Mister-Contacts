@@ -1,6 +1,6 @@
 const {  useNavigate } = ReactRouterDOM
 
-export function ContactList({ contacts }) {
+export function ContactList({ contacts, onRemove }) {
     const navigate = useNavigate()
 
     return (
@@ -14,6 +14,7 @@ export function ContactList({ contacts }) {
                         <p>{firstName} {lastName}</p>
                         <p>{phone}</p>
                         <p>{email}</p>
+                        <button onClick={(ev) =>{ev.stopPropagation(); onRemove(id)}}>X</button>
                     </li>
                 })}
             </ul>
