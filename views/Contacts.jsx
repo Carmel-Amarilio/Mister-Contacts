@@ -4,6 +4,7 @@ import { removeContact } from "../store/actions/contact.actions.js";
 import { updateContact } from "../store/actions/contact.actions.js";
 import { addContact } from "../store/actions/contact.actions.js";
 import { ContactList } from "../cmps/ContactList.jsx";
+import { ContactAdd } from "../cmps/CotactAdd.jsx";
 const { useSelector, useDispatch } = ReactRedux;
 const { useState, useEffect } = React;
 export function Contacts() {
@@ -34,10 +35,11 @@ export function Contacts() {
     <section>
       <h1>my contacts</h1>
       <ContactList contacts={contacts} onRemove={onRemoveContact} />
-      isAdd?(
-      <ContactAdd onAddContact={onAddContact} />
-      ):(
-      <button onClick={setisAdd(!isAdd)}>Add Contact</button>)
+      {isAdd ? (
+        <ContactAdd onAddContact={onAddContact} />
+      ) : (
+        <button onClick={() => setisAdd(!isAdd)}>Add Contact</button>
+      )}
     </section>
   );
 }

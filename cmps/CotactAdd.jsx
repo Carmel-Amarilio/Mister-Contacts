@@ -1,4 +1,5 @@
-import { addContact } from "../store/actions/contact.actions.js";
+import { contactService } from "../services/contact.service.js";
+const { useState } = React;
 export function ContactAdd({ onAddContact }) {
   const [newContact, setNewContact] = useState(
     contactService.getEmptyContact()
