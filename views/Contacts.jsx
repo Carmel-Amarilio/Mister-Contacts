@@ -1,20 +1,20 @@
-import { contactService } from "../services/contact.service";
+import { contactService } from "../services/contact.service.js";
+import { loadContacts } from "../store/actions/contact.actions.js";
 const { useSelector, useDispatch } = ReactRedux;
 const { useState, useEffect } = React;
 export function Contacts() {
   const [contacts, setContacts] = useState();
   const [isAdd, setisAdd] = useState(null);
-  const [newContact, setNewContact] = useState(
-    contactService.getEmptyContact()
+  const [newContact, setNewContact] = useState();
+  const selector = useSelector(
+    (storeState) => storeState.contactModule.contacts
   );
 
   useEffect(() => {
-    loadContacts();
+    loadContacts().catch((err) => console.log(err));
+    console.log(selector);
   }, []);
 
-  function loadContacts() {
-    setContacts(contactService.query());
-  }
   function handleChange({ target }) {
     const field = target.name;
     let value = target.value;
@@ -47,42 +47,44 @@ export function Contacts() {
     <div>
       <h1>my contacts</h1>
       <div>
-        isAdd?
-        <div>
-          <form
-            onSubmit={(ev) => {
-              ev.preventDefault();
-              onAddContact(...contacts, newContact);
-              setAddMode(null);
-            }}
-          >
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First name"
-              onChange={handlechange}
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last name"
-              onChange={handlechange}
-            />
-            <input
-              type="text"
-              name="mail"
-              placeholder="Mail"
-              onChange={handlechange}
-            />
-            <input
-              type="tel"
-              name="firstName"
-              placeholder="First name"
-              onChange={handlechange}
-            />
-          </form>
-        </div>
-        :<button onClick={setisAdd(true)}>Add Contact</button>
+        {isAdd ? (
+          <div>
+            <form
+              onSubmit={(ev) => {
+                ev.preventDefault();
+                onAddContact(...contacts, newContact);
+                setisAdd(null);
+              }}
+            >
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First name"
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last name"
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="mail"
+                placeholder="Mail"
+                onChange={handleChange}
+              />
+              <input
+                type="tel"
+                name="firstName"
+                placeholder="First name"
+                onChange={handleChange}
+              />
+            </form>
+          </div>
+        ) : (
+          <button onClick={setisAdd(true)}>Add Contact</button>
+        )}
       </div>
     </div>
   );
