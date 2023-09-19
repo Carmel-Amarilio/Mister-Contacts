@@ -31,18 +31,17 @@ function save(contact) {
 }
 
 function getEmptyContact() {
-  return { firstName: "", lastName: "", email: "", phone: "" };
+  return { firstName: "", lastName: "", email: "", phone: 0 };
 }
 
 function _createContacts() {
   let cars = utilService.loadFromStorage(CONTACT_KEY);
   if (!cars || !cars.length) {
     contacts = [];
-    contacts.push(_createContact("avi", "avi", "jgjgjg@hghghgh", 0505050505));
-    contacts.push(_createContact("avi", "avi", "jgjgjg@hghghgh", 0505050505));
-    contacts.push(_createContact("avi", "avi", "jgjgjg@hghghgh", 0505050505));
-    contacts.push(
-      _createContact("moshe", "moshe", "jgjgfffjg@hghghgh", 05050505)
+    contacts.push(_createContact("avi", "avi", "jgjgjg@hghghgh", "0505050505"));
+    contacts.push(_createContact("avi", "avi", "jgjgjg@hghghgh", "0505050505"));
+    contacts.push(_createContact("avi", "avi", "jgjgjg@hghghgh", "0505050505"));
+    contacts.push(_createContact("moshe", "moshe", "jgjgfffjg@hghghgh", "05050505")
     );
 
     utilService.saveToStorage(CONTACT_KEY, contacts);
