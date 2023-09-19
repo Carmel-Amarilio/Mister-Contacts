@@ -20,7 +20,7 @@ export function loadContacts() {
 
 export function removeContact(contactId) {
     return contactService
-        .removeContact(contactId)
+        .remove(contactId)
         .then(() => {
             store.dispatch({
                 type: REMOVE_CONTACT,

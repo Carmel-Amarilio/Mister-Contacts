@@ -19,9 +19,9 @@ export function contactReducer(state = initialState, action = {}) {
         case ADD_CONTACT:
             return { ...state, contacts: [action.contact, ...state.contacts] }
         case UPDATE_CONTACT:
-            return { ...state, contacts: state.contacts.map(contact => contact._id === action.contact._id ? action.contact : contact) }
+            return { ...state, contacts: state.contacts.map(contact => contact.id === action.contact._id ? action.contact : contact) }
         case REMOVE_CONTACT:
-            contacts = state.contacts.filter(contact => contact._id !== action.contactId)
+            contacts = state.contacts.filter(contact => contact.id !== action.contactId)
             return { ...state, contacts }
         case SET_FILTER_BY:
             return { ...state, filterBy: action.val }
