@@ -1,9 +1,9 @@
 import { contactService } from "../../services/contact.service.js";
 import {
   SET_CONTACTS,
-  UPDATE_CONTACTS,
-  ADD_CONTACTS,
-  REMOVE_CONTACTS,
+  UPDATE_CONTACT,
+  ADD_CONTACT,
+  REMOVE_CONTACT,
 } from "../reducers/contact.reducer.js";
 import { store } from "../store.js";
 
@@ -28,7 +28,7 @@ export function removeContact(contactId) {
     .removeContact(contactId)
     .then(() => {
       store.dispatch({
-        type: REMOVE_CONTACTS,
+        type: REMOVE_CONTACT,
         contactId,
       });
     })
@@ -43,7 +43,7 @@ export function updateContact(contact) {
     .save(contact, true)
     .then((savedContact) => {
       store.dispatch({
-        type: UPDATE_CONTACTS,
+        type: UPDATE_CONTACT,
         contact: savedContact,
       });
     })
@@ -57,7 +57,7 @@ export function addContact(contactToAdd) {
     .save(contactToAdd, false)
     .then((savedContact) => {
       store.dispatch({
-        type: ADD_CONTACTS,
+        type: ADD_CONTACT,
         contact: savedContact,
       });
     })

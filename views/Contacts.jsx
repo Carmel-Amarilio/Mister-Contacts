@@ -2,7 +2,7 @@ import { contactService } from "../services/contact.service.js";
 import { loadContacts } from "../store/actions/contact.actions.js";
 import { removeContact } from "../store/actions/contact.actions.js";
 import { updateContact } from "../store/actions/contact.actions.js";
-import { onAddContact } from "../store/actions/contact.actions.js";
+import { addContact } from "../store/actions/contact.actions.js";
 const { useSelector, useDispatch } = ReactRedux;
 const { useState, useEffect } = React;
 export function Contacts() {
@@ -25,8 +25,7 @@ export function Contacts() {
     updateContact(contactId).catch((err) => console.log(err));
   }
   function onAddContact(contact) {
-    const newContact = contactService.createContact(contact);
-    addContact(newContact);
+    addContact(contact).catch((err) => console.log(err));
   }
   function handleChange({ target }) {
     const field = target.name;
@@ -57,12 +56,19 @@ export function Contacts() {
     <div>
       <h1>my contacts</h1>
       <div>
-        {isAdd ? (
+        {!isAdd ? (
           <div>
             <form
               onSubmit={(ev) => {
                 ev.preventDefault();
-                onAddContact(newContact);
+                onAddContact(
+                  contactService.createContact(
+                    newContact.firstName,
+                    newContact.lastName,
+                    newContact.mail,
+                    newContact.phone
+                  )
+                );
                 setisAdd(null);
               }}
             >
