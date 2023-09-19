@@ -6,7 +6,7 @@ import { AppHeader } from "./cmps/AppHeader.jsx";
 import { Home } from "./views/Home.jsx";
 import { Teams } from "./views/Teams.jsx";
 import { Contacts } from "./views/Contacts.jsx";
-// import { ContactsDetails } from "./views/ContactsDetails.jsx";
+import { ContactsDetails } from "./views/ContactsDetails.jsx";
 
 import { store } from './store/store.js'
 
