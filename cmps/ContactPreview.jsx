@@ -1,9 +1,9 @@
-const { useNavigate } = ReactRouterDOM
+const { useNavigate } = ReactRouterDOM;
 
 export function ContactPreview({ contact, onRemove }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const { id, firstName, lastName, phone, email } = contact
+  const { id, firstName, lastName, phone, email } = contact;
   return (
     <div onClick={() => navigate(`/contacts/${id}`)}>
       <h3>
@@ -11,7 +11,18 @@ export function ContactPreview({ contact, onRemove }) {
       </h3>
       <p>{email}</p>
       <p>{phone}</p>
-      <button onClick={(ev) =>{ev.stopPropagation(); onRemove(id)}}>X</button>
+      <button
+        className="contact-btn"
+        onClick={(ev) => {
+          ev.stopPropagation();
+          onRemove(id);
+        }}
+      >
+        <img
+          src="assets/img/delete_FILL0_wght400_GRAD0_opsz24 (1).png"
+          alt="add contact"
+        />
+      </button>
     </div>
   );
 }

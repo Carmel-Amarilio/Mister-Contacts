@@ -32,13 +32,18 @@ export function Contacts() {
   }
 
   return (
-    <section>
+    <section className="contacts">
       <h1>my contacts</h1>
       <ContactList contacts={contacts} onRemove={onRemoveContact} />
       {isAdd ? (
         <ContactAdd onAddContact={onAddContact} />
       ) : (
-        <button onClick={() => setisAdd(!isAdd)}>Add Contact</button>
+        <button className="contact-btn" onClick={() => setisAdd(!isAdd)}>
+          <img
+            src="assets/img/add_FILL0_wght400_GRAD0_opsz24.png"
+            alt="add contact"
+          />
+        </button>
       )}
     </section>
   );

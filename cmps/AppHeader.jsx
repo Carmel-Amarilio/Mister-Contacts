@@ -7,9 +7,22 @@ export function AppHeader() {
         <h3>Team Contact!</h3>
       </Link>
       <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/teams">Teams</NavLink>
-        <NavLink to="/contacts">Contacts</NavLink>
+        <button className="contact-btn">
+          <NavLink to="/">
+            <img
+              src="assets/img/home_FILL0_wght400_GRAD0_opsz24.png"
+              alt="home"
+            />
+          </NavLink>
+        </button>
+        <button className="contact-btn">
+          <NavLink to="/contacts">
+            <img
+              src="assets/img/outline_contacts_black_24dp.png"
+              alt="contacts"
+            />
+          </NavLink>
+        </button>
       </nav>
     </header>
   );

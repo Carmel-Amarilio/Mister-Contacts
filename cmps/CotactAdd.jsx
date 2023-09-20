@@ -66,7 +66,7 @@ export function ContactAdd({ onAddContact }) {
           placeholder="Phone"
           onChange={handleChange}
         />
-        <button>Add</button>
+        <button className="wordy-btn">Add</button>
       </form>
     </div>
   );

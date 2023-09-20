@@ -1,23 +1,13 @@
-.contacts-details{
-    position: relative;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
+.contacts-details {
+  position: relative;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
 }
 
-.contacts-details img{
-    width: 200px;
+.contacts-details img {
+  width: 200px;
 }
-.contacts-details >*{
-    margin-block-end: 5px;
-}
-
-.contacts-details button{
-    position: fixed;
-    left: 50px;
-    border: 0;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: lightblue;
-    cursor: pointer;
+.contacts-details > * {
+  margin-block-end: 5px;
 }
