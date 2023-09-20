@@ -1,8 +1,9 @@
 import { contactService } from "../services/contact.service.js";
 const { useState } = React;
-export function ContactAdd({ onAddContact }) {
+
+export function ContactAdd({ onAddContact, contact }) {
   const [newContact, setNewContact] = useState(
-    contactService.getEmptyContact()
+    contact || contactService.getEmptyContact()
   );
   function handleChange({ target }) {
     const field = target.name;
@@ -27,18 +28,15 @@ export function ContactAdd({ onAddContact }) {
       [field]: value,
     }));
   }
+
+  const { firstName, lastName, email, phone } = newContact;
   return (
     <div>
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
           onAddContact(
-            contactService.createContact(
-              newContact.firstName,
-              newContact.lastName,
-              newContact.mail,
-              newContact.phone
-            )
+            contactService.createContact(firstName, lastName, email, phone)
           );
         }}
       >
@@ -46,27 +44,31 @@ export function ContactAdd({ onAddContact }) {
           type="text"
           name="firstName"
           placeholder="First name"
+          value={firstName}
           onChange={handleChange}
         />
         <input
           type="text"
           name="lastName"
           placeholder="Last name"
+          value={lastName}
           onChange={handleChange}
         />
         <input
           type="text"
-          name="mail"
+          name="email"
           placeholder="Mail"
+          value={email}
           onChange={handleChange}
         />
         <input
           type="tel"
           name="phone"
           placeholder="Phone"
+          value={phone}
           onChange={handleChange}
         />
-        <button className="wordy-btn">Add</button>
+        <button className="wordy-btn">{contact ? "save" : "Add"}</button>
       </form>
     </div>
   );

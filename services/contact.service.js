@@ -28,7 +28,7 @@ function remove(contactId) {
 
 function save(contact, isEdit) {
   return isEdit
-    ? storageService.put(CONTACT_KEY, contact.id)
+    ? storageService.put(CONTACT_KEY, contact)
     : storageService.post(CONTACT_KEY, contact);
 }
 
